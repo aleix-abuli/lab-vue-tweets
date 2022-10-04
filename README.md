@@ -159,7 +159,7 @@ You will do it in the next iterations, one step at a time. You will be replacing
 Extract the existing `img` tag and render it through the `ProfileImage` component:
 
 ```jsx
-<img src="IMAGE_URL" className="profile" alt="profile"/>
+<img src="IMAGE_URL" class="profile" alt="profile"/>
 ```
 
 **Render the component**
@@ -169,7 +169,7 @@ Once done, import the `ProfileImage` component to `Tweet.js`.  After importing i
 ```vue
 <!-- ... -->
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 <!-- ... -->
 ```
