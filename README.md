@@ -20,8 +20,8 @@ We will be cloning an existing piece of UI from a popular app, Twitter. Let's ge
 
   ```bash
   $ cd lab-vue-tweets
-  $ yarn install
-  $ yarn dev
+  $ npm install
+  $ npm run dev
   ```
 
 ## Submission
@@ -67,7 +67,7 @@ Once you initially run the app you should see the following:
 
 ### Iteration 2 | Pass the Tweet as a Prop
 
-In `App.vue`, we have an array named `tweetsArray` that holds objects representing tweets.  We will use the `Tweet` component to display these *tweet* objects. In the `Tweet` we will display the user's `name`, user's `image`, user's `handle`, tweet `timestamp` and the `message`. 
+In `App.vue`, we have an array named `tweets` that holds objects representing tweets.  We will use the `Tweet` component to display these *tweet* objects. In the `Tweet` we will display the user's `name`, user's `image`, user's `handle`, tweet `timestamp` and the `message`. 
 
 
 
@@ -79,12 +79,12 @@ Pass the first data object from the `tweets`  as a prop to the `Tweet` component
 <!-- src/App.vue -->
 <!-- ... -->
 
-<Tweet tweet="tweets" />
+<Tweet :tweet="tweets[0]" />
 ```
 
 **Display the tweet content in the `Tweet` component**
 
-Update the `Tweet` component to display the values coming from the `tweet` prop. Remember that the value we passed is an object/
+Update the `Tweet` component to display the values coming from the `tweet` prop. Remember that the value we passed is an object!
 
 **Expected Result**
 
@@ -118,11 +118,11 @@ In the following iterations, you will need to refactor the `Tweet` component. Yo
 <!-- FINAL VERSION -->
 
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 
-    <div className="body">
-      <div className="top">
+    <div class="body">
+      <div class="top">
         <User userData="user" />
         <Timestamp time="timestamp" />
       </div>
@@ -136,14 +136,11 @@ In the following iterations, you will need to refactor the `Tweet` component. Yo
 </template>
 
 <script>
-export default {
-  name: Tweet,
-  props: {
+  const props = defineProps({
     user: Object,
     timestamp: String,
     message: String
-  }
-}
+  });
 </script>
 ```
 
@@ -189,9 +186,9 @@ Once done, import the `ProfileImage` component to `Tweet.js`.  After importing i
 Extract the existing `span` tags displaying the user information and render them through the `User` component:
 
 ```vue
-<span className="user">
-  <span className="name"> USER_NAME </span>
-  <span className="handle">@ USER_HANDLE</span>
+<span class="user">
+  <span class="name"> USER_NAME </span>
+  <span class="handle">@ USER_HANDLE</span>
 </span>
 ```
 
@@ -203,11 +200,11 @@ Import the `User` component to `Tweet.js`.  After importing it, render the compo
 <!-- ... -->
 
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 
-    <div className="body">
-      <div className="top">
+    <div class="body">
+      <div class="top">
         <User userData="user" />
 
 <!-- ... -->
@@ -226,7 +223,7 @@ We passed the object with the user information through the prop `userData`. Acce
 Extract the existing `span` tag displaying the *timestamp* information and render it through the `Timestamp` component:
 
 ```jsx
-<span className="timestamp"> TWEET_TIMESTAMP </span>
+<span class="timestamp"> TWEET_TIMESTAMP </span>
 ```
 
 **Render the component**
@@ -237,11 +234,11 @@ Import the `Timestamp` component to `Tweet.js`.  After importing it, render the 
 <!-- ... -->
 
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 
-    <div className="body">
-      <div className="top">
+    <div class="body">
+      <div class="top">
         <User userData="user" />
         <Timestamp time="timestamp" />
 
@@ -261,7 +258,7 @@ Import the `Timestamp` component to `Tweet.js`.  After importing it, render the 
 Extract the existing `p` tag and render it through the `Message` component:
 
 ```jsx
-<p className="message"> TWEET_MESSAGE </p>
+<p class="message"> TWEET_MESSAGE </p>
 ```
 
 **Render the component**
@@ -272,11 +269,11 @@ When done, import the `Message` component and render it in the `Tweet.js` in the
 <!-- ... -->
 
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 
-    <div className="body">
-      <div className="top">
+    <div class="body">
+      <div class="top">
         <User userData="user" />
         <Timestamp time="timestamp" />
       </div>
@@ -297,7 +294,7 @@ When done, import the `Message` component and render it in the `Tweet.js` in the
 Extract the existing message `div.actions` tag and render it through the `Actions` component:
 
 ```jsx
-    <div className="actions">
+    <div class="actions">
       <i class="far fa-comment"></i>
       <i class="fas fa-retweet"></i>
       <i class="far fa-heart"></i>
@@ -313,11 +310,11 @@ When done, import the `Actions` component and render it in the `Tweet.js` like t
 <!-- ... -->
 
 <template>
-  <div className="tweet">
+  <div class="tweet">
     <ProfileImage image="user.image" />
 
-    <div className="body">
-      <div className="top">
+    <div class="body">
+      <div class="top">
         <User userData="user" />
         <Timestamp time="timestamp" />
       </div>
